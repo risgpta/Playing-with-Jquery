@@ -4,6 +4,11 @@ body {
     height: 1000px;
 }
 
+html {
+    height: 100%;
+}
+
+
 .main-heading {
     color: #FFF;
     font-size: 32px;
@@ -11,17 +16,20 @@ body {
     padding: 20px;
     margin: auto;
     width: 90%;
+    margin-top: 100px;
 }
 
 .align-center {
-    padding: 50px;
-    margin-left: 30px;
+     width: 600px;
+    margin: auto;
+    height: 600px;
+    margin-top: 200px;
 }
 
 .align-center td {
-    border: 2px solid darkblue;
-    height: 50px;
-    width: 50px;
+   border: 2px solid darkblue;
+    height: 200px;
+    width: 200px;
 }
 
 .select {
@@ -43,7 +51,7 @@ body {
 }
 
 .place {
-    font-size: 30px;
+       font-size: 80px;
     color: lightcyan;
     background-color: darkslategray;
     text-align: center;

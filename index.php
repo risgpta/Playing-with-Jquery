@@ -2,7 +2,7 @@
 
 <head>
     <title>TIC TAC </title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="style-tic.css">
 </head>
 

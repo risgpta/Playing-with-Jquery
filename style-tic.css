@@ -8,7 +8,6 @@ html {
     height: 100%;
 }
 
-
 .main-heading {
     color: #FFF;
     font-size: 32px;
@@ -20,14 +19,14 @@ html {
 }
 
 .align-center {
-     width: 600px;
+    width: 600px;
     margin: auto;
     height: 600px;
     margin-top: 200px;
 }
 
 .align-center td {
-   border: 2px solid darkblue;
+    border: 2px solid darkblue;
     height: 200px;
     width: 200px;
 }
@@ -51,7 +50,7 @@ html {
 }
 
 .place {
-       font-size: 80px;
+    font-size: 80px;
     color: lightcyan;
     background-color: darkslategray;
     text-align: center;
@@ -81,15 +80,23 @@ a {
     width: 50%;
 }
 
-.foot-game{
-	
-       font-size: 26px;
+.foot-game {
+    font-size: 26px;
     color: #0D47A1;
     position: fixed;
     top: 1300px;
     margin: auto;
     width: 500px;
     left: 300px;
-
-	
 }
+
+.select-big {
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 0px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+

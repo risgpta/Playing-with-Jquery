@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<head>
+    <title>TIC TAC </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style-tic.css">
+</head>
+
+<body>
+
+    <div id="first">
+        <div class="main-heading" class="keepctn">
+            <div class="btn">START GAME</div>
+
+        </div>
+    </div>
+
+
+    <div id="second">
+        <div class="main-heading">
+            <div id="player">TIC TAC TOE</div>
+            <div id="select">Whom you want to go first :</div>
+            <div id="start"> Starting TIC TAC TOE </div>
+        </div>
+        <div class="main-heading heading-2" id='disc'>
+            <div class="select-big" id="yp">YOU</div>
+            <div class="select-big" id="cp">COMPUTER</div>
+            <span class="select" id="x">X</span><span class="select" id="o">O</span>
+        </div>
+        <table class="align-center" id="game">
+            <tr>
+                <td class="place" id="c1" data-index="1" data-value=""></td>
+                <td class="place" id="c2" data-index="2" data-value=""></td>
+                <td class="place" id="c3" data-index="3" data-value=""></td>
+            </tr>
+            <tr>
+                <td class="place" id="c4" data-index="4" data-value=""></td>
+                <td class="place" id="c5" data-index="5" data-value=""></td>
+                <td class="place" id="c6" data-index="6" data-value=""></td>
+            </tr>
+            <tr>
+                <td class="place" id="c7" data-index="7" data-value=""></td>
+                <td class="place" id="c8" data-index="8" data-value=""></td>
+                <td class="place" id="c9" data-index="9" data-value=""></td>
+            </tr>
+        </table>
+        <div id="warn"></div>
+    </div>
+    <div class="foot-game">
+        <div>&copy; @risgpta</div>
+        <div><i>built by</i> Rishabh Gupta</div>
+    </div>
+</body>
+
+
+<script>
+    $(document).ready(function() {
+        $('#first').css('display', 'block');
+        $('#second').css('display', 'none');
+        $('#x').css('display', 'none');
+        $('#o').css('display', 'none');
+    });
+
+
+    $('.btn').click(function() {
+        $('#first').css('display', 'none');
+        $('#second').css('display', 'block');
+    });
+
+    $(document).ready(function() {
+        $('#game').hide();
+        $('#start').hide();
+    });
+
+    var yp = 0;
+    var cp = 0;
+    var f;
+
+    //YOU -start-
+    $('#yp').click(function() {
+
+        $('#yp').css('display', 'none');
+        $('#cp').css('display', 'none');
+        $('#select').html('Choose your symbol');
+        f = 'yp';
+        $('#x').css('display', 'block');
+        $('#o').css('display', 'block');
+
+    });
+    $('#x').click(function() {
+        yp = 'X';
+        cp = 'O';
+        $('#select').html('You chose ' + yp);
+        setTimeout(function() {
+            $('#disc').hide();
+            $('#game').show();
+            $('#start').show();
+            $('#select').hide();
+        }, 2000);
+
+        start_game();
+    });
+    $('#o').click(function() {
+        yp = 'O';
+        cp = 'X';
+        $('#select').html('You chose' + yp);
+        setTimeout(function() {
+            $('#disc').hide();
+            $('#game').show();
+            $('#start').show();
+            $('#select').hide();
+        }, 2000);
+
+        start_game();
+    });
+    //YOU -end-
+
+
+    //COMPUTER -start-
+    $('#cp').click(function() {
+        $('#yp').css('display', 'none');
+        $('#cp').css('display', 'none');
+        $('#select').html('Computer will choose the symbol');
+        f = 'cp';
+        $('#x').css('display', 'block');
+        $('#o').css('display', 'block');
+
+        var pr = Math.floor((Math.random() * 100000) + 1);
+        if (pr > 50000)
+            pr = 1;
+        else
+            pr = 0;
+        if (pr == 0)
+            cp = 'O';
+        else
+            cp = 'X';
+
+        if (cp == 'X')
+            yp = 'O';
+        else
+            yp = 'X';
+
+        $('#select').html('Computer chose ' + cp);
+        setTimeout(function() {
+            $('#disc').hide();
+            $('#game').show();
+            $('#start').show();
+            $('#select').hide();
+        }, 2000);
+
+        start_game();
+    });
+    //COMPUTER -end-
+
+    var game_cont = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var clicked = 0;
+
+    var game;
+
+    function start_game() {
+
+        if (game == 'DONE') {
+            $('#player').html(' ');
+            return;
+        }
+        if (f == 'cp') {
+
+            var comp = Math.floor(Math.random() * game_cont.length);
+            var value = game_cont[comp];
+            /* setTimeout(function() {
+                 $('#start').html('YOUR TURN');
+                 $('#c' + value).html(cp);
+                 $('#c' + value).attr('data-value', cp);
+             }, 2500);*/
+
+            $('#start').html('YOUR TURN');
+            $('#c' + value).html(cp);
+            $('#c' + value).attr('data-value', cp);
+            game_cont.splice(comp, 1);
+            check('Computer');
+            f = 'yp';
+            start_game();
+        } else {
+            $('#start').html('COMPUTER TURN');
+        }
+    }
+
+
+    $('#game td').click(function() {
+
+        if (f == 'cp') {
+            $('#warn').html('COMPUTER TURN!!');
+            setTimeout(function() {
+                $('#warn').html('')
+            }, 1000);
+            return;
+        }
+        var index = $(this).data('index');
+
+        var is = $('#c' + index).attr('data-value');
+
+        if (is != '') {
+            $('#warn').html('CANNOT BE FILLED TWICE!!');
+            setTimeout(function() {
+                $('#warn').html('')
+            }, 1000);
+            return;
+        }
+        $('#c' + index).html(yp);
+        $('#c' + index).attr('data-value', yp);
+        clicked = index;
+
+        for (var i = 0; i < game_cont.length; i++) {
+            if (game_cont[i] == index) {
+                game_cont.splice(i, 1);
+                break;
+            }
+        }
+        check('YOU');
+        f = 'cp';
+        start_game();
+    });
+
+
+    function check(player) {
+        var arr = [];
+        for (var x = 1; x <= 9; x++) {
+            var e = $('#c' + x).attr('data-value');
+            arr.push(e);
+        }
+
+        for (var i = 0; i < 9; i += 3) {
+            if (arr[i] == arr[i + 1] && arr[i] == arr[i + 2] && arr[i] != '') {
+                $('#game').hide();
+                $('#start').html(player + ' Won!!');
+                clicked = player;
+                game = 'DONE';
+                return;
+            }
+        }
+
+        for (var i = 0; i < 3; i++) {
+            if (arr[i] == arr[i + 3] && arr[i] == arr[i + 6] && arr[i] != '') {
+                $('#game').hide();
+                $('#start').html(player + ' Won!!');
+                clicked = player;
+                game = 'DONE';
+                return;
+            }
+        }
+
+        i = 0;
+        d = 4;
+
+        if (arr[i] == arr[i + d] && arr[i + d] == arr[i + 2 * d] && arr[i] != '') {
+            $('#game').hide();
+            $('#start').html(player + ' Won!!');
+            clicked = player;
+            game = 'DONE';
+            return;
+        }
+
+        i = 2;
+        d = 2;
+
+        if (arr[i] == arr[i + d] && arr[i + d] == arr[i + 2 * d] && arr[i] != '') {
+            $('#game').hide();
+            $('#start').html(player + ' Won!!');
+            clicked = player;
+            game = 'DONE';
+            return;
+
+        }
+
+        var c = 0;
+        for (var i = 0; i < 9; i++) {
+            if (arr[i] != '')
+                c++;
+        }
+
+        if (c == 9) {
+            $('#start').html('No player Wins!!');
+            clicked = 'NO';
+            game = 'DONE';
+            return;
+        }
+    }
+</script>

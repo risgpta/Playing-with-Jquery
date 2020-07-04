@@ -1,6 +1,6 @@
 body {
     font-family: monospace;
-    background: linear-gradient(to bottom, #1082c5 0%, #E1F5FE 80%);
+    background: linear-gradient(to bottom, #465056 0%, #E1F5FE 80%);
     height: 1000px;
 }
 
@@ -102,4 +102,14 @@ a {
 
 .putgif {
     float: left;
+}
+
+.welcome {
+    margin: auto;
+    font-size: 55px;
+    font-weight: 500;
+    color: #FFF;
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
 }

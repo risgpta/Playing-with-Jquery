@@ -20,19 +20,21 @@
         </div>
     </div>
 
-    <div class="btn" id="add">
-        <button>ADD BAR</button>
-    </div>
-    <div class="btn" id="del">
-        <button>DELETE BAR</button>
-    </div>
+    <div class="btn-class">
+        <div class="btn" id="add">
+            <button>ADD BAR</button>
+        </div>
+        <div class="btn" id="del">
+            <button>DELETE BAR</button>
+        </div>
 
-    <div class="btn" id="popu">
-        <button>Populate</button>
-    </div>
+        <div class="btn" id="popu">
+            <button>Populate</button>
+        </div>
 
-    <div class="btn" id="sort">
-        <button>Sort</button>
+        <div class="btn" id="sort">
+            <button>Sort</button>
+        </div>
     </div>
 
 
@@ -87,7 +89,7 @@
 
     function populate() {
         for (var x = 1; x <= total; x++) {
-            var comp = Math.floor(Math.random() * 6000000);
+            var comp = Math.floor(Math.random() * 7000000);
             comp = comp / 10000;
             comp = Math.floor(comp);
             $('#bar' + x).data('height', comp);
@@ -113,10 +115,6 @@
 
         let mn = 9999;
         let j = 0;
-        for (var x = 1; x <= total; x++) {
-
-            console.log(parseInt($('#bar' + x).data('height')));
-        }
 
         for (var x = 1; x <= total; x++) {
 
@@ -135,7 +133,11 @@
             $('#bar' + parseInt(j)).data('height', $('#bar' + parseInt(x)).data('height'));
             $('#bar' + parseInt(x)).css('height', mn + 'px');
             $('#bar' + parseInt(x)).data('height', mn);
+        }
 
+        for (var x = 1; x <= total; x++) {
+
+            $('#bar' + x).css('background-color', '#166aac');
         }
     }
 </script>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style-tic.css">
 </head>
 
-<body>
+<body style="background-color: grey;">
 
 
 
@@ -17,6 +17,8 @@
         <div class="main-heading" class="keepctn">
             <div class="btn" id="fp">PLAY WITH A FRIEND</div>
             <div class="btn" id="cp">PLAY WITH COMPUTER</div>
+            <div class="btn" id="sbr">Sorting Bars</div>
+            <div class="btn" id="spsg">Play Stone Paper Scissor</div>
         </div>
     </div>
     <div class="foot-game">
@@ -30,6 +32,12 @@
         });
         $('#cp').click(function() {
             window.location.href = "playc.html";
+        });
+        $('#sbr').click(function() {
+            window.location.href = "misc/index.html";
+        });
+        $('#spsg').click(function() {
+            window.location.href = "stnpprscr/stnpprscr.html";
         });
     </script>
 

@@ -8,8 +8,9 @@
 </head>
 
 <body>
-    <canvas id="puppyCanvas" width="800px" height="800px" style="border:2px solid black" onclick="storeGuess(event)"></canvas>
-    <div style="border:1px solid;padding : 5px;" onclick="drawpath();">DRAW PATHS</div>
+    <canvas id="puppyCanvas" width="1000px" height="1200px" style="border:2px solid black" onclick="storeGuess(event)"></canvas>
+    <div class="dbtn" onclick="drawpath();">DRAW PATHS</div>
+
 </body>
 <script>
     var index = 0;
@@ -46,6 +47,10 @@
          ctx.moveTo(4, 10);
          ctx.lineTo(30, 40);
          ctx.stroke();*/
+    }
+
+    function clear() {
+        ctx.clearRect(0, 0, 1000, 1200);
     }
 </script>
 

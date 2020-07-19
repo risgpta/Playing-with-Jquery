@@ -47,3 +47,14 @@
     background-color: orangered;
     position: fixed;
 }
+
+.dbtn {
+    border: 1px solid;
+    padding: 10px;
+    width: 100px;
+    margin: 10px;
+    margin: auto;
+    margin-top: 10px;
+    background: darkblue;
+    color: white;
+}

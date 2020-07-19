@@ -40,3 +40,10 @@
     padding: 5px;
     display: block;
 }
+
+.ant {
+    width: 10px;
+    height: 10px;
+    background-color: orangered;
+    position: fixed;
+}

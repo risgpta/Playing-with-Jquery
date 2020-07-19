@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TIC TAC </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <canvas id="puppyCanvas" width="800px" height="800px" style="border:2px solid black" onclick="storeGuess(event)"></canvas>
+    <div style="border:1px solid;padding : 5px;" onclick="drawpath();">DRAW PATHS</div>
+</body>
+<script>
+    var index = 0;
+    var ants = [];
+    var canvasSetup = document.getElementById("puppyCanvas");
+    var ctx = canvasSetup.getContext("2d");
+    guessX = 0; //stores user's click on canvas
+    guessY = 0; //stores user's click on canvas
+    function storeGuess(event) {
+        var x = event.offsetX;
+        var y = event.offsetY;
+        guessX = x;
+        guessY = y;
+        console.log("x coords: " + guessX + ", y coords: " + guessY);
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(guessX, guessY, 10, 10);
+        ants.push({
+            x: x,
+            y: y
+        });
+        index++;
+    }
+
+    function drawpath() {
+        for (var i = 0; i < ants.length; i++) {
+            for (var j = i + 1; j < ants.length; j++) {
+                ctx.beginPath();
+                ctx.moveTo(ants[i].x, ants[i].y);
+                ctx.lineTo(ants[j].x, ants[j].y);
+                ctx.stroke();
+            }
+        }
+        /* ctx.beginPath();
+         ctx.moveTo(4, 10);
+         ctx.lineTo(30, 40);
+         ctx.stroke();*/
+    }
+</script>
+
+</html>

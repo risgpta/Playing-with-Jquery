@@ -89,14 +89,14 @@
 
     function populate() {
         for (var x = 1; x <= total; x++) {
-            var comp = Math.floor(Math.random() * 7000000);
+            var comp = Math.floor(Math.random() * 5300000);
             comp = comp / 10000;
             comp = Math.floor(comp);
             $('#bar' + x).data('height', comp);
             $('#bar' + x).data('index', x);
             $('#bar' + x).css('height', comp + 'px');
             $('#bar' + x).css('background-color', '#72797f');
-            console.log(comp);
+            //  console.log(comp);
         }
     }
     $('#popu').click(function() {
@@ -116,23 +116,35 @@
         let mn = 9999;
         let j = 0;
 
+        var xx = [];
+        var jj = [];
+        var nn = [];
+
         for (var x = 1; x <= total; x++) {
 
             mn = 9999;
             j = 0;
-            for (var y = x; y <= total; y++) {
+            var t = parseInt(x) * 1000;
+            // console.log(t);
 
-                console.log(parseInt($('#bar' + parseInt(y)).data('height')));
+            for (var y = x; y <= total; y++) {
+                //   console.log(parseInt($('#bar' + parseInt(y)).data('height')));
                 if (mn > parseInt($('#bar' + parseInt(y)).data('height'))) {
                     j = y;
                     mn = parseInt($('#bar' + parseInt(y)).data('height'));
                 }
-                console.log(mn);
+                //  console.log(mn);
             }
-            $('#bar' + parseInt(j)).css('height', $('#bar' + parseInt(x)).data('height') + 'px');
-            $('#bar' + parseInt(j)).data('height', $('#bar' + parseInt(x)).data('height'));
+
+
+
+            $('#bar' + parseInt(x)).data('background-color', 'yellow').delay(6000);
+            $('#bar' + parseInt(j)).data('background-color', 'yellow').delay(6000);
+            $('#bar' + parseInt(j)).css('height', $('#bar' + parseInt(x)).data('height') + 'px').delay(6000);
+            $('#bar' + parseInt(j)).data('height', $('#bar' + parseInt(x)).data('height')).delay(6000);
             $('#bar' + parseInt(x)).css('height', mn + 'px');
             $('#bar' + parseInt(x)).data('height', mn);
+
         }
 
         for (var x = 1; x <= total; x++) {
